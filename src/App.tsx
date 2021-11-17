@@ -26,11 +26,12 @@ function App() {
             setValue(e.target.value);
           }}
           onPaste={(e) => {
-            e.preventDefault()
-            e.stopPropagation();
             console.log("on paste");
-            console.log(e, e.clipboardData.getData("Text"));
-            setTags(tags.concat(e.clipboardData.getData("Text")));
+            // 自分がフォーカスされてる時だけ
+            if(e.target === document.activeElement){
+              e.preventDefault();
+              setTags(tags.concat(e.clipboardData.getData("Text")));
+            }
           }}
         />
       </div>
