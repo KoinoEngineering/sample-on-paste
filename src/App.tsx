@@ -28,8 +28,11 @@ function App() {
           onPaste={(e) => {
             console.log("on paste");
             // 自分がフォーカスされてる時だけ
-            if(e.target === document.activeElement){
+            if (e.target === document.activeElement) {
+              // デフォルトのイベントへ波及させない
               e.preventDefault();
+
+              // タグの追加
               setTags(tags.concat(e.clipboardData.getData("Text")));
             }
           }}
