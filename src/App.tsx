@@ -33,7 +33,7 @@ function App() {
               e.preventDefault();
 
               // タグの追加
-              setTags(t=>t.concat(e.clipboardData.getData("Text")));
+              setTags(t=>t.concat(...e.clipboardData.getData("Text").split(",").filter(v=>v)));
             }
           }}
         />
